@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class Hello extends ListenerAdapter implements ICommand {
     String name="Comanda_SALUT";
-    @Override
+
     public String getName(){
         return this.name;
     }
@@ -19,7 +19,7 @@ public class Hello extends ListenerAdapter implements ICommand {
         if (event.getMember().getUser().isBot()) {
             return;
         }
-        if(messageSent[0].equalsIgnoreCase( Info.PREFIX+"!hi")) {
+        if(messageSent[0].equalsIgnoreCase( Info.PREFIX+"hi")) {
             event.getChannel().sendMessage("Salut coaie-miu").queue();
         }
     }
