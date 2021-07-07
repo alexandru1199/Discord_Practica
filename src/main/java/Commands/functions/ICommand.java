@@ -1,10 +1,11 @@
-package commands;
+package commands.functions;
 
 import java.util.List;
 
 public interface ICommand {
-    String getName();
+     String getInfo();
     default List<String> getAlliases(){
         return List.of();
     };
+
 }

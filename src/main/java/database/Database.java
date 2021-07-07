@@ -16,4 +16,19 @@ public class Database  {
 
 
     }
+    public  static String getPrefix(String ID) {
+
+        try {
+            Statement statement = initialize_database();
+            ResultSet resultSet=statement.executeQuery("select Prefix  from `discord`.`prefix` where Guild_ID="+ID);
+            if(resultSet.next())
+            {
+                return resultSet.getString("prefix");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "!";
+
+    }
 }

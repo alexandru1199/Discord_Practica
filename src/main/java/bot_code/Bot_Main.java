@@ -1,27 +1,25 @@
 package bot_code;
 
 
-import commands.Commands_List;
+import commands.functions.Commands_List;
 import database.Database;
 
+import database.PDF_Generator;
 import events.Events;
 import net.dv8tion.jda.api.JDABuilder;
 
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import java.sql.Statement;
 import java.util.List;
 
 public class Bot_Main {
-    public static void main(String[] args) throws java.sql.SQLException {
+    public static void main(String[] args) throws Exception{
+
+
         Statement statement = Database.initialize_database();
         List<ListenerAdapter> commands = Commands_List.ListaComenzi();
-        Document doc = Jsoup.parse("<html></html>");
-        doc.body().addClass("body-styles-cls");
-        doc.body().appendElement("div");
-        System.out.println(doc.toString());
+        PDF_Generator.generateHtml();
         try {
 
             JDABuilder builder = Building.Build(args[0]);

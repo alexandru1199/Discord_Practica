@@ -18,6 +18,13 @@
          <artifactId>botCommons</artifactId>
          <version>2.3.8</version>
      </dependency>
+     <!-- add all iText 7 modules -->
+     <dependency>
+         <groupId>com.itextpdf</groupId>
+         <artifactId>itext7-core</artifactId>
+         <version>7.1.15</version>
+         <type>pom</type>
+     </dependency>
      <dependency>
          <groupId>net.dv8tion</groupId>
          <artifactId>JDA</artifactId>
