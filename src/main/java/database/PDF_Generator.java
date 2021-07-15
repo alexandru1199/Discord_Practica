@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class PDF_Generator{
-     public static void generateHtml() throws Exception{
+     public static void generatePDF() throws Exception{
           Statement statement = Database.initialize_database();
           ResultSet resultSet=statement.executeQuery("select * from lista_nume");
           String names="\n";
@@ -34,7 +34,7 @@ public class PDF_Generator{
           Paragraph p=new Paragraph().add(names);
           document.add(p);
           document.close();
-          System.out.println("PDF Created");
+       
 
      }
 }

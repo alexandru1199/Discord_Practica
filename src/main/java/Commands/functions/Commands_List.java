@@ -2,6 +2,8 @@ package commands.functions;
 
 
 import commands.*;
+import commands.verify.AddRoleVerify;
+import commands.verify.Verify;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.util.ArrayList;
@@ -20,6 +22,8 @@ public class Commands_List {
         list.add(new Show_Prefix());
         list.add(new Take_Project());
         list.add(new Show_Projects());
+        list.add(new AddRoleVerify());
+        list.add(new Curs());
         return list;
     }
 
@@ -30,6 +34,8 @@ public class Commands_List {
         list.add(new Help());
         list.add(new Verify());
         list.add(new Generate_VoiceChannel());
+        list.add(new AddRoleVerify());
+        list.add(new Curs());
         return list;
     }
 }
