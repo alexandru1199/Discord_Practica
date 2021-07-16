@@ -1,7 +1,7 @@
-package commands;
+package commands.courses_classes;
 
 import commands.functions.Get_Prefix;
-import commands.functions.ICommand;
+import commands.interfaces.ICommand;
 import commands.functions.Word_Finder;
 import database.Database;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -11,7 +11,7 @@ import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Curs extends ListenerAdapter implements ICommand {
+public class Courses extends ListenerAdapter implements ICommand {
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
@@ -21,19 +21,19 @@ public class Curs extends ListenerAdapter implements ICommand {
             return;
         }
         try {
-            if (Word_Finder.ContainsWord(messageSent[0], "curs"))
-                if (messageSent[0].equalsIgnoreCase(Get_Prefix.get_prefix(event) + "curs") && messageSent.length == 3) {
+            if (Word_Finder.ContainsWord(messageSent[0], "course"))
+                if (messageSent[0].equalsIgnoreCase(Get_Prefix.get_prefix(event) + "course") && messageSent.length == 3) {
                     Statement statement = Database.initialize_database();
 
-                    ResultSet resultSet = statement.executeQuery("select class,index_course,name_course,extension  from `discord`.`courses` where " +
-                            "class= '" + messageSent[1].toUpperCase() + "' and index_course=" + messageSent[2]);
+                    ResultSet resultSet = statement.executeQuery("select subject,index_course,name_course,extension  from `discord`.`courses` where " +
+                            "subject= '" + messageSent[1].toUpperCase() + "' and index_course=" + messageSent[2]);
                     if (resultSet.next()) {
 
 
                         event.getChannel().sendFile(new File("C:\\Discord_Practica\\src\\main\\java\\courses\\"
                                 + resultSet.getString("name_course") + resultSet.getString("extension"))).queue();
                     } else {
-                        System.out.println("Not valid course");
+                        event.getChannel().sendMessage("Not valid course").queue();
                     }
 
                 }
@@ -45,8 +45,8 @@ public class Curs extends ListenerAdapter implements ICommand {
 
     @Override
     public String getInfo() {
-        return "Command:prefix+class_name+course_number\n" +
+        return "Command:prefix+Course+subject_name+course_number\n" +
                 "Usage:get courses\n" +
-                "-----------------------------";
+                "-----------------------------\n";
     }
 }

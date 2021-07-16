@@ -1,7 +1,8 @@
-package commands;
+package commands.prefix_classes;
 
-import bot_code.Info;
+
 import commands.functions.Get_Prefix;
+import commands.interfaces.ICommand;
 import commands.functions.Word_Finder;
 import database.Database;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -11,7 +12,13 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Change_Prefix  extends ListenerAdapter {
+public class Change_Prefix  extends ListenerAdapter implements ICommand {
+    @Override
+    public String getInfo() {
+        return "Command: prefix+change+newprefix\n" +
+                "Usage:changes the prefix\n"+
+                "-----------------------------\n";
+    }
 
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
